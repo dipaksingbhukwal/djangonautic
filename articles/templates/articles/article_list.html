@@ -1,0 +1,29 @@
+<!-- articles_list.html -->
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Articles</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Article List</h1>
+    </header>
+    <main class="article-list">
+        <div class="container">
+            {% for article in articles %}
+            <article class="article">
+                <h2>{{ article.title }}</h2>
+                <p class="snippet">{{ article.snippet }}</p>
+                <p class="date">{{ article.date }}</p>
+            </article>
+            {% endfor %}
+        </div>
+    </main>
+</body>
+</html>
