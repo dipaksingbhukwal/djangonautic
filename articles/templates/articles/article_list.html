@@ -1,29 +1,14 @@
-<!-- articles_list.html -->
+{% extends 'base_layout.html' %}
 
-{% load static %}
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Articles</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
-</head>
-<body>
-    <header>
-        <h1>Article List</h1>
-    </header>
-    <main class="article-list">
-        <div class="container">
-            {% for article in articles %}
-            <article class="article">
-                <h2>{{ article.title }}</h2>
-                <p class="snippet">{{ article.snippet }}</p>
-                <p class="date">{{ article.date }}</p>
-            </article>
-            {% endfor %}
+{% block content%}
+    <h1>Articles List</h1>
+    <div class="articles">
+    {% for article in articles %}
+        <div class="article">
+            <h2><a href="{% url 'articles:detail' slug=article.slug %}">{{ article.title }}</a></h2>
+            <p>{{ article.snippet }}</p>
+            <p>{{ article.date }}</p>
         </div>
-    </main>
-</body>
-</html>
+    {% endfor %}
+    </div>
+{% endblock %}
